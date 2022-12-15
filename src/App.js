@@ -1,91 +1,12 @@
 import React, { useState } from "react";
 import { Prism } from "@mantine/prism";
+import { comp_questions } from "./questions.js";
 
 function App() {
-  const [questions] = useState([
-    {
-      id: 1,
-      title: "Function Anatomy",
-      body: "Given the following function:",
-      snippet: "def funky(arg1: int) -> None:\n    print(arg1 ** 2)",
-      question: "What line is known as the 'function head'?",
-      answers: ["1"],
-    },
-    {
-      id: 2,
-      title: "Function Anatomy",
-      body: "Given the following updated function:",
-      snippet: `
-      def funky(arg1: int) -> None:
-    first_math = arg1 ** 2
-	second_math = first_math / arg1
-	third_math = second_math - first_math
-	print(third_math + arg1)`,
-      question: "At what line does the 'function body' begin?",
-      answers: ["2"],
-    },
-    {
-      id: 3,
-      title: "Function Anatomy",
-      body: "Given the same function as the last question:",
-      snippet: `
-		def funky(arg1: int) -> None:
-	first_math = arg1 ** 2
-	second_math = first_math / arg1
-	third_math = second_math - first_math
-	print(third_math + arg1)`,
-      question: "How many variables are there? Careful with this one...",
-      answers: ["4"],
-    },
-    {
-      id: 4,
-      title: "Function Anatomy",
-      body: "Based on nothing but the given function head:",
-      snippet: `
-		  def my_really_really_massively_big_funny_funky_function_name(arg1: int, arg2: str, argument_the_third = None) -> int:`,
-      question: "What type of data will this function return?",
-      answers: ["int", "integer"],
-    },
-    {
-      id: 5,
-      title: "Function Anatomy",
-      body: "",
-      snippet: `# no code for this question`,
-      question:
-        "If a function doesn't return anything, it's known as a ___ function.",
-      answers: ["void"],
-    },
-
-    {
-      id: 6,
-      title: "Stack Traces",
-      body: "Given the following function:",
-      snippet: `
-	  	def triangles(width: float, height: int):
-	width *= 2
-	height -= 1
-	a = 4
-	b = 7.5
-	width += (a - b)
-	height = (height - a) + width
-	return width * height`,
-      question:
-        "What would this function return, given the values 2.5 and 11 as arguments?",
-      answers: ["11.25"],
-    },
-    {
-      id: 7,
-      title: "Stack Traces",
-      body: "Given the following function:",
-      snippet: `
-		def format_real_nice(thingy: str):
-	return f"The final answer is {thingy}!"`,
-      question: "FINISH THIS",
-      answers: ["11.25"],
-    },
-  ]);
+  const [questions] = useState(comp_questions);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [userAnswer, setUserAnswer] = useState("");
+  const [userError, setUserError] = useState(false);
 
   const handleChange = (event) => {
     setUserAnswer(event.target.value);
@@ -95,8 +16,10 @@ function App() {
     event.preventDefault();
 
     // Check if the user's answer is correct
+    let isCorrect = false;
     currentQuestion.answers.forEach((answer) => {
       if (userAnswer.toLowerCase() === answer) {
+        isCorrect = true;
         // If it is, get the next question
         const nextQuestion = questions.find(
           (q) => q.id === currentQuestion.id + 1
@@ -109,12 +32,16 @@ function App() {
         } else {
           alert("you win!");
         }
+        return;
       }
     });
+
+    // If the user's answer was incorrect, set the userError state to true
+    setUserError(!isCorrect);
   };
 
   return (
-    <div className="container mx-auto p-4 dark:bg-gray-800">
+    <div className="container mx-auto p-4 dark:bg-gray-800 h-screen">
       <h1 className="text-4xl font-bold mb-4 dark:text-gray-300">
         {currentQuestion.title}
       </h1>
@@ -140,7 +67,21 @@ function App() {
         >
           Submit
         </button>
+        <div>
+          {userError === true && (
+            <p className="py-2 text-red-500 text-sm">❌ Incorrect answer!</p>
+          )}
+        </div>
       </form>
+      <footer className="fixed bottom-0 w-full py-6 text-gray-500 text-sm">
+        made by cool matt for 2022's 1501 class, cause he's just that cool.
+        <br />
+        made with react and tailwind, as well as prism for code boxes.
+        <br />
+        thanks to dylan for tailwind boilerplate and colton for beta testing.
+        <br />
+        and my gf liv for telling me my site looks nice :)
+      </footer>
     </div>
   );
 }
