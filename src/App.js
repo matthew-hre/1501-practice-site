@@ -73,7 +73,7 @@ function App() {
           )}
         </div>
       </form>
-      <footer className="fixed bottom-0 w-full py-6 text-gray-500 text-sm">
+      <footer className="bottom-0 w-full py-6 text-gray-500 text-sm">
         made by cool matt for 2022's 1501 class, cause he's just that cool.
         <br />
         made with react and tailwind, as well as prism for code boxes.
