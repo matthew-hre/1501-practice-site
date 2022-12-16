@@ -189,4 +189,21 @@ def dog_factory():
       "What is the return value of dog_factory? If the code errors, please input what line the error is on",
     answers: ["11"],
   },
+  {
+    id: 10,
+    title: "Errors",
+    body: "Given the following broken code:",
+    snippet: `
+def test(a: int, b: int):
+    return a * b
+
+value_x = 3
+value_y = 11
+
+return test(a, b)
+  `,
+    question:
+      "Identify which type of error is occuring (syntax, logic, compilation)",
+    answers: ["syntax"],
+  },
 ];
