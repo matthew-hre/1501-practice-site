@@ -206,4 +206,154 @@ return test(a, b)
       "Identify which type of error is occuring (syntax, logic, compilation)",
     answers: ["syntax"],
   },
+  {
+    id: 11,
+    title: "Errors",
+    body: "Given the following broken function:",
+    snippet: `
+def get_area_of_square():
+    width = input("please enter a width (in meters): ")
+    height = input("please enter a height (in meters): ")
+
+    if width > 10:
+      	print("the width is too large!")
+    else if width <= 0:
+      	print("the width is too small!")
+
+    if height > 12:
+      	print("the width is too large!")
+    else if width < 4:
+      	print("the width is too small!")
+
+    return width * height
+  `,
+    question:
+      "Identify which type of error is occuring (syntax, logic, compilation)",
+    answers: ["compilation"],
+  },
+  {
+    id: 12,
+    title: "Errors",
+    body: "Given the following broken code:",
+    snippet: `
+def func1(test_num):
+    test_num *= 2
+    bigger_num = test_num + 5
+    return bigger_num
+
+def func2(test_num, second_test_num):
+    test_num *= second_test_num
+    second_test_num = test_num * 5
+    return test_num / second_test_num
+
+FIRST_NUMBER = 2
+SECOND_NUMBER = 5
+THIRD_NUMBER = 8
+
+begin = func1(FIRST_NUMBER)
+continue = func3(begin, SECOND_NUMBER)
+end = func2(begin, continue)
+
+def func3(test_num, second_test_num):
+    test_num -= second_test_num
+    second_test_num = test_num - 11
+    return test_num + second_test_num - 2
+  `,
+    question:
+      "Identify which type of error is occuring (syntax, logic, compilation)",
+    answers: ["compilation"],
+  },
+  {
+    id: 13,
+    title: "Loops",
+    body: "Considering the following code:",
+    snippet: `
+x = 0
+while x < 10:
+	x += 2
+  `,
+    question: "Is this a counted loop or a sentinel loop?",
+    answers: ["counted"],
+  },
+  {
+    id: 14,
+    title: "Loops",
+    body: "Considering the following code:",
+    snippet: `
+my_answer = input("should i stop? ")
+while x != "nah":
+	x = input("should i stop? ")
+  `,
+    question: "Is this a counted loop or a sentinel loop?",
+    answers: ["sentinel"],
+  },
+  {
+    id: 15,
+    title: "Loops",
+    body: "Consider the following code:",
+    snippet: `
+def loop_time(my_list):
+	LIST_SIZE = len(my_list)
+	item_index = 0
+	
+	while item_index < LIST_SIZE:
+		print(my_list[item_index])
+		item_index += 1
+
+def cards():
+	suits = ["Spades", "Hearts", "Clubs", "Diamonds"]
+	values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+	deck = []
+
+	for suit in suits:
+		for value in values:
+			deck.append(f"{value} of {suit}")
+
+	return deck
+
+deck = cards()
+
+loop_time(deck)
+  `,
+    question: "How many lines will be printed to the console when this runs?",
+    answers: ["52"],
+  },
+  {
+    id: 16,
+    title: "Loops",
+    body: "Consider the updated code:",
+    snippet: `
+def loop_time(my_list):
+	LIST_SIZE = len(my_list)
+	item_index = 0
+	count = 0
+	
+	while item_index < LIST_SIZE:
+		#
+		# LOOK OUT! this changed!
+		#
+		if my_list[item_index][0] != "A" or my_list[item_index][0] != "J" or my_list[item_index][0] != "Q" or my_list[item_index][0] != "K"
+			count += int(my_list[item_index][0]) # watch this...
+		item_index += 1
+
+	print(count)
+
+def cards():
+	suits = ["Spades", "Hearts", "Clubs", "Diamonds"]
+	values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+	deck = []
+
+	for suit in suits:
+		for value in values:
+			deck.append(f"{value} of {suit}")
+
+	return deck
+
+deck = cards()
+
+loop_time(deck)
+  `,
+    question: "What value will be printed to the console when this code runs?",
+    answers: ["180"],
+  },
 ];
