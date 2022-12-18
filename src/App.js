@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { comp_questions } from "./questions.js";
 import Footer from "./Footer.js";
 import WrongAnswer from "./WrongAnswer.js";
@@ -9,6 +9,20 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [userAnswer, setUserAnswer] = useState("");
   const [userError, setUserError] = useState(false);
+
+  useEffect(() => {
+    const data = JSON.parse(window.localStorage.getItem("currentQuestion"));
+    if (data !== null && data.id !== 1) {
+      setCurrentQuestion(data);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "currentQuestion",
+      JSON.stringify(currentQuestion)
+    );
+  }, [currentQuestion]);
 
   const handleChange = (event) => setUserAnswer(event.target.value);
 
@@ -30,7 +44,8 @@ function App() {
           setCurrentQuestion(nextQuestion);
           setUserAnswer("");
         } else {
-          alert("you win!");
+          setCurrentQuestion(questions[0]);
+          setUserAnswer("");
         }
         return;
       }

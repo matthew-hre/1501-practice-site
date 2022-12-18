@@ -1,7 +1,6 @@
 import React from "react";
 
 function WrongAnswer(props) {
-  console.log(props);
   return (
     <div>
       {props.userError === true && (

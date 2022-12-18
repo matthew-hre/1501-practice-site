@@ -356,4 +356,52 @@ loop_time(deck)
     question: "What value will be printed to the console when this code runs?",
     answers: ["180"],
   },
+
+  {
+    id: 17,
+    title: "Practice Coding Problems",
+    body: 'The next few problems will contain a prompt, an input file, and a question. Feel free to read the input from a file, or manually parse it into a list or whatever you gotta do. A magic square is defined as a 3x3 square, where each element in the square is an integer greater than 0, and the sum of the numbers of each row and column are the same "magic number". Please write a program to validate the following magic squares. Then, multiply together all the "magic numbers" found. If a magic square is not valid, its "magic number" should be considered -1.',
+    snippet: `
+4 9 2
+3 5 7
+8 1 6
+
+15 8 13
+10 12 14
+11 16 9
+
+19 12 17
+14 16 18
+15 20 13
+
+11 2 21
+1 5 7
+21 10 8
+
+7 0 5
+2 4 6
+3 8 1
+
+21 14 19
+16 18 20
+17 22 15
+
+23 16 21
+18 21 22
+19 24 17
+
+13 6 10
+8 10 12
+9 4 7
+
+#
+# This problem is a bit tricky, so here's a kind of step by step process:
+# First, you'll need to turn these magic squares into workable data. Probably a 2d list.
+# Next, you're gonna need to figure out if a square is magic or not. This means, every row and column needs to sum up to *some* value. You'll probably wanna keep track of this value somewhere.
+# Once you figure out if a square is magic or not, you'll want to modify your final result/score/counter variable. Whatever you called it.
+#
+  `,
+    question: "What value will be printed to the console when this code runs?",
+    answers: ["-16796160"],
+  },
 ];
