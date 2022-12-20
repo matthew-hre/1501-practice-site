@@ -130,7 +130,7 @@ def add_up_the_big_list(big_list: list) -> int:
 
 	return total
 
-def find_area()
+def find_area():
 	big_list = make_a_big_list(25, 25)
 	area = add_up_the_big_list(big_list)
 	return area
