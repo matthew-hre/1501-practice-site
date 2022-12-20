@@ -9,6 +9,8 @@ function Footer() {
       <br />
       thanks to dylan for tailwind boilerplate and colton for beta testing.
       <br />
+      and amy for calling me on sloppy code.
+      <br />
       and my gf liv for telling me my site looks nice :)
     </footer>
   );

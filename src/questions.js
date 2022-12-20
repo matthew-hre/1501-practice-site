@@ -203,7 +203,7 @@ value_y = 11
 return test(a, b)
   `,
     question:
-      "Identify which type of error is occuring (syntax, logic, compilation)",
+      "Identify which type of error is occuring (syntax, logic, runtime)",
     answers: ["syntax"],
   },
   {
@@ -228,8 +228,8 @@ def get_area_of_square():
     return width * height
   `,
     question:
-      "Identify which type of error is occuring (syntax, logic, compilation)",
-    answers: ["compilation"],
+      "Identify which type of error is occuring (syntax, logic, runtime)",
+    answers: ["runtime"],
   },
   {
     id: 12,
@@ -260,8 +260,8 @@ def func3(test_num, second_test_num):
     return test_num + second_test_num - 2
   `,
     question:
-      "Identify which type of error is occuring (syntax, logic, compilation)",
-    answers: ["compilation"],
+      "Identify which type of error is occuring (syntax, logic, runtime)",
+    answers: ["runtime"],
   },
   {
     id: 13,
