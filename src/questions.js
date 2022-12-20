@@ -159,13 +159,13 @@ class Factory:
 		self.dogs = []
 
 	def make_dogs(self):
-		for idx in len(self.names):
+		for idx in range(len(self.names)):
 			name = self.names[idx]
 			age = self.ages[idx]
 
 			dog = Dog(name, age, self.good_boy)
 
-			dogs.append(dog)
+			self.dogs.append(dog)
 
 			if self.good_boy:
 				self.good_boy = False
@@ -332,7 +332,7 @@ def loop_time(my_list):
 		#
 		# LOOK OUT! this changed!
 		#
-		if my_list[item_index][0] != "A" or my_list[item_index][0] != "J" or my_list[item_index][0] != "Q" or my_list[item_index][0] != "K"
+		if my_list[item_index][0] != "A" and my_list[item_index][0] != "J" and my_list[item_index][0] != "Q" and my_list[item_index][0] != "K":
 			count += int(my_list[item_index][0]) # watch this...
 		item_index += 1
 
